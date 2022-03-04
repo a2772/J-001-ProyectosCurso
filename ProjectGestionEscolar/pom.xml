@@ -20,7 +20,7 @@
                     <archive>
                         <manifest>
                             <!-- give full qualified name of your main class-->
-                            <mainClass>mx.com.upiicsa.ipn.projectgestionescolar</mainClass>
+                            <mainClass>mx.com.upiicsa.ipn.projectgestionescolar.Pruebas</mainClass>
                         </manifest>
                     </archive>
                 </configuration>
