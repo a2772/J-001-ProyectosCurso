@@ -1,4 +1,4 @@
-package mx.com.upiicsa.ipn.projectgestionescolar;
+package mx.com.upiicsa.ipn.projectgestionescolar.alumno;
 
 import java.util.ArrayList;
 import mx.com.upiicsa.ipn.projectgestionescolar.academia.Carrera;
