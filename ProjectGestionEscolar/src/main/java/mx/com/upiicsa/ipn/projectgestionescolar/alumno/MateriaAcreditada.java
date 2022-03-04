@@ -9,6 +9,14 @@ public class MateriaAcreditada {
     private String formaAcreditacion;
     private int calificacionFinal;
 
+    public MateriaAcreditada() {
+        initialize();
+    }
+    
+    private void initialize() {
+        this.calificacionesParciales = new ArrayList<>();
+    }
+    
     public Materia getMateria() {
         return materia;
     }

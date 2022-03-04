@@ -3,12 +3,19 @@ package mx.com.upiicsa.ipn.projectgestionescolar;
 import java.util.Date;
 
 public class Persona {
-   private String nombre; 
-   private String primerApellido; 
-   private String segundoApellido; 
-   private Date fechaNacimiento; 
-   private String sexo;
-
+    private String nombre; 
+    private String primerApellido; 
+    private String segundoApellido; 
+    private Date fechaNacimiento; 
+    private String sexo;
+    public Persona() {
+        initialize();
+    }
+    
+    private void initialize() {
+        
+    }
+    
     public String getNombre() {
         return nombre;
     }

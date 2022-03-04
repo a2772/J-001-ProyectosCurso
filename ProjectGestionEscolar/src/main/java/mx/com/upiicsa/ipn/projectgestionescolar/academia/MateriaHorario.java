@@ -12,6 +12,16 @@ public class MateriaHorario {
     private ArrayList<Alumno> alumnos;
     private ArrayList<Profesor> profesores;
     private ArrayList<CeldaDeHorario> celdasDeHorario;
+    
+    public MateriaHorario() {
+        initialize();
+    }
+    
+    private void initialize() {
+        this.alumnos = new ArrayList<>();
+        this.profesores = new ArrayList<>();
+        this.celdasDeHorario = new ArrayList<>();
+    }
 
     public String getNombreSecuencia() {
         return nombreSecuencia;

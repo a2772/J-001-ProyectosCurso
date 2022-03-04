@@ -10,7 +10,15 @@ public class Direccion {
     private String numeroExterior;
     private String numeroInterior;
     private int cp;
-
+    
+    public Direccion() {
+        initialize();
+    }
+    
+    private void initialize() {
+        
+    }
+    
     public String getEstado() {
         return estado;
     }

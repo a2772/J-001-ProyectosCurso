@@ -12,6 +12,14 @@ public class SituacionAcademica {
     private float creditosDisponibles;
     private ArrayList<Materia> materias;
     private Carrera carrera;
+    
+    public SituacionAcademica() {
+        initialize();
+    }
+    
+    private void initialize() {
+        this.materias = new ArrayList<>();
+    }
 
     public String getEstado() {
         return estado;

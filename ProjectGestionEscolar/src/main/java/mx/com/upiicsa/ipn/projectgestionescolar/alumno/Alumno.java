@@ -8,7 +8,17 @@ public class Alumno extends Persona{
     private String boleta;
     private ArrayList<SituacionAcademica> situacionesAcademicas;
     private ArrayList<CeldaDeHorario> celdasDeHorario;
-
+    
+    public Alumno()  {
+        super();
+        initialize();
+    }
+    
+    private void initialize() {
+        this.situacionesAcademicas = new ArrayList<>();
+        this.celdasDeHorario = new ArrayList<>();
+    }
+    
     public String getBoleta() {
         return boleta;
     }

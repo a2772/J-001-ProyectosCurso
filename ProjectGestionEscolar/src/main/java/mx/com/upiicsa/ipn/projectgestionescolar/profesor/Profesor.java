@@ -8,7 +8,16 @@ public class Profesor extends Persona{
     private String cedula;
     private int numeroTrabajador;
     private ArrayList<CeldaDeHorario> celdasDeHorario;
-
+    
+    public Profesor()  {
+        super();
+        initialize();
+    }
+    
+    private void initialize() {
+        this.celdasDeHorario = new ArrayList<>();
+    }
+    
     public String getCedula() {
         return cedula;
     }

@@ -6,6 +6,14 @@ public class CeldaDeHorario {
     private String diaSemana;
     private Time horaInicio;
     private Time horaFin;
+    
+    public CeldaDeHorario() {
+        initialize();
+    }
+    
+    private void initialize() {
+        
+    }
 
     public String getDiaSemana() {
         return diaSemana;

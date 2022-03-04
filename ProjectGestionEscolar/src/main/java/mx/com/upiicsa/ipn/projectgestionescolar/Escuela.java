@@ -7,7 +7,15 @@ public class Escuela {
     private String institucion;
     private int capacidadAlumnos;
     private String ofertaEducativa;
-
+    
+    public Escuela() {
+        initialize();
+    }
+    
+    private void initialize() {
+        
+    }
+    
     public String getNombreEscuela() {
         return nombreEscuela;
     }

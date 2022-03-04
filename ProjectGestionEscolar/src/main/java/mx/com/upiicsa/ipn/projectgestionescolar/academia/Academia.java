@@ -6,6 +6,14 @@ public class Academia {
     private String nombreAcademia;
     private ArrayList<Materia> materias;
     private String idAcademia;
+    
+    public Academia() {
+        initialize();
+    }
+    
+    private void initialize() {
+        this.materias = new ArrayList<>();
+    }
 
     public String getNombreAcademia() {
         return nombreAcademia;

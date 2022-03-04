@@ -7,7 +7,15 @@ public class Carrera {
     private String nombreCarrera;
     private ArrayList<Materia> materias;
     private String planEstudio;
-
+    
+    public Carrera() {
+        initialize();
+    }
+    
+    private void initialize() {
+        this.materias = new ArrayList<>();
+    }
+    
     public String getNombreCarrera() {
         return nombreCarrera;
     }

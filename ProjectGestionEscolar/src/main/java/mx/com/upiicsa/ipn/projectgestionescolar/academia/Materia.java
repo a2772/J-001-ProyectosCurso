@@ -4,7 +4,15 @@ public class Materia {
     private String materia;
     private int horas;
     private float creditosParaInscribir;
-
+    
+    public Materia(){
+        initialize();
+    }
+    
+    private void initialize() {
+        
+    }
+    
     public String getMateria() {
         return materia;
     }
