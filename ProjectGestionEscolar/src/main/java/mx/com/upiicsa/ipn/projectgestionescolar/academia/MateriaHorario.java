@@ -2,12 +2,14 @@ package mx.com.upiicsa.ipn.projectgestionescolar.academia;
 
 import java.util.ArrayList;
 import mx.com.upiicsa.ipn.projectgestionescolar.alumno.Alumno;
+import mx.com.upiicsa.ipn.projectgestionescolar.alumno.SituacionAcademica;
 import mx.com.upiicsa.ipn.projectgestionescolar.horario.CeldaDeHorario;
 import mx.com.upiicsa.ipn.projectgestionescolar.profesor.Profesor;
 
 public class MateriaHorario {
     private String nombreSecuencia;
     private int cupo;
+    private Carrera carrera;
     private Materia materia;
     private ArrayList<Alumno> alumnos;
     private ArrayList<Profesor> profesores;
@@ -70,5 +72,40 @@ public class MateriaHorario {
     public void setCeldasDeHorario(ArrayList<CeldaDeHorario> celdasDeHorario) {
         this.celdasDeHorario = celdasDeHorario;
     }
+
+    public Carrera getCarrera() {
+        return carrera;
+    }
+
+    public void setCarrera(Carrera carrera) {
+        this.carrera = carrera;
+    }
     
+    public boolean calificaAlumnoParcial(int indiceAlumno, int parcial, Float calificacion){
+        /* En este método debemos indicar, el índice de la lista con el número de alumno,
+        en ArrayList empieza en 0 */
+        boolean success = false;
+        //Ahora apuntamos al mismo sitio que el alumno
+        Alumno alumnoACalificar = this.alumnos.get(indiceAlumno);
+        /*Posteriormente, obtenemos la carrera a la que pertenece esta materiaHorario y buscamos a que situacion académica
+        del alumno le pertenece*/
+        int indiceSituacionAcademica = 0;
+        for(SituacionAcademica situacionAcademicaBuscada: alumnoACalificar.getSituacionesAcademicas()){
+            if(situacionAcademicaBuscada.getCarrera().getNombreCarrera().equals(this.carrera.getNombreCarrera())){
+                //Si es igual al nombre de la carrera, salimos del ciclo y lo dejamos como índice
+                break;
+            }else{
+                indiceSituacionAcademica++;
+            }
+        }
+        //Ahora tenemos la posición de la situación académica, pasamos a su materia correspondiente
+        //(MateriaAcreditada) y ponemos la calificacion
+        return success;
+    }
+    
+    public boolean calificaAlumnoFinal(int indiceAlumno, Float calificacion){
+        boolean success = false;
+        
+        return success;
+    }
 }
