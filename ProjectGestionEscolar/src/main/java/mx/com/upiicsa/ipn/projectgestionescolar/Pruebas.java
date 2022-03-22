@@ -28,6 +28,15 @@ public class Pruebas {
         d=count;
         System.out.println("");*/
         
-        
+        /*
+        int a=67,b=60;
+        byte c;
+        c=(byte)(a+b);
+        System.out.println(c);*/
+        short b,a,c;
+        b=2;
+        a=3;
+        c=(short)(a+b);
+        short Long = 10;
     }
 }
