@@ -10,6 +10,7 @@ public class Persona {
     private String sexo;
     public Persona() {
         initialize();
+        this.primerApellido = "Yo";
     }
     
     private void initialize() {

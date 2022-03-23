@@ -28,6 +28,12 @@ public class Pruebas {
         d=count;
         System.out.println("");*/
         
-        
+        int count = 15;
+        int a,b,c,d;
+        a=count++;
+        b=count;
+        c=++count;
+        d=count;
+        System.out.println("");
     }
 }
