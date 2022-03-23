@@ -59,7 +59,7 @@ public class Singleton
         try {
             throw new CloneNotSupportedException();
         } catch (CloneNotSupportedException ex) {
-            System.out.println("No se puede clonar un objeto de la clase SoyUnico");
+            System.out.println("No se puede clonar un objeto de la clase Singeton");
         }
         return null; 
     }
