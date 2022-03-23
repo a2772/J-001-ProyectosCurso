@@ -27,16 +27,6 @@ public class Pruebas {
         c=++count;
         d=count;
         System.out.println("");*/
-        
-<<<<<<< HEAD
-        int count = 15;
-        int a,b,c,d;
-        a=count++;
-        b=count;
-        c=++count;
-        d=count;
-        System.out.println("");
-=======
         /*
         int a=67,b=60;
         byte c;
@@ -47,6 +37,5 @@ public class Pruebas {
         a=3;
         c=(short)(a+b);
         short Long = 10;
->>>>>>> 0ada5554875e04776ae9f87b85f056ae5cb09e7b
     }
 }
