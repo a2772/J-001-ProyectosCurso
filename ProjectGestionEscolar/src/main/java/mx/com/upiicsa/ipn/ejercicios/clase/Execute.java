@@ -1,5 +1,7 @@
 package mx.com.upiicsa.ipn.ejercicios.clase;
 
+import java.time.LocalDate;
+import java.time.LocalTime;
 import mx.com.upiicsa.ipn.ejercicios.clase.singleton.Singleton;
 
 public class Execute {
@@ -61,5 +63,51 @@ public class Execute {
         s.substring(1,3);
         s+=" two";
         System.out.println(s.length());*/
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        //Saber si es mayor o menor de 18 años
+        LocalDate nacimiento = LocalDate.of(2004,03,29);
+        if(nacimiento.plusYears(18).isEqual(LocalDate.now()) || nacimiento.plusYears(18).isBefore(LocalDate.now())){
+            //Si es igual o previa a hoy, tiene 18 años
+            System.out.println("Tiene al menos los 18 años");
+        }else{
+            System.out.println("Tiene menos de 18 años");
+            int i =nacimiento.compareTo(LocalDate.of(2002,03,29));
+            System.out.println("I: "  + i);
+        }
+        
+        //Lógica inversa
+        if(LocalDate.now().minusYears(18).isEqual(nacimiento) || LocalDate.now().minusYears(18).isAfter(nacimiento)){
+            //Si es igual o previa a hoy, tiene 18 años
+            System.out.println("Tiene al menos los 18 años");
+        }else{
+            System.out.println("Tiene menos de 18 años");
+        }
+        
+        
+        /*
+        Ejercicios:
+        1) Método que dada una fecha y una variable tiempo (delta) en días
+            Si está dentro del rango es tares recibida (si es antes) o si es después
+        2) 
+        */
     }
 }
