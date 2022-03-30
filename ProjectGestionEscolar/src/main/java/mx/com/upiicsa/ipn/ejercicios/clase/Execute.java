@@ -2,7 +2,9 @@ package mx.com.upiicsa.ipn.ejercicios.clase;
 
 import java.time.LocalDate;
 import java.time.LocalTime;
+import java.time.Month;
 import mx.com.upiicsa.ipn.ejercicios.clase.singleton.Singleton;
+import mx.com.upiicsa.ipn.ejercicios.clase.EjercicioFecha220328.ValidaTiempoEntrega;
 
 public class Execute {
     public static void main(String[] args) {
@@ -102,12 +104,46 @@ public class Execute {
             System.out.println("Tiene menos de 18 años");
         }
         
+        ///Ejercicio 1. Purebas
+        System.out.println("\n\n\n-------------------------------------------------------------------\n");
+        StringBuilder mensajeResultadoPrueba;
+        LocalDate fechaAValidar = LocalDate.of(2022, Month.MARCH, 29);
+        LocalDate nuevaFechaLimite = LocalDate.of(2022, Month.MARCH, 30);
+        short nuevoNumeroDias = 3;
         
-        /*
-        Ejercicios:
-        1) Método que dada una fecha y una variable tiempo (delta) en días
-            Si está dentro del rango es tares recibida (si es antes) o si es después
-        2) 
-        */
+        ValidaTiempoEntrega validaTiempoEntrega = new ValidaTiempoEntrega(fechaAValidar, (short)10);
+        //Caso 1
+        mensajeResultadoPrueba = new StringBuilder("->Caso 1\n");
+        mensajeResultadoPrueba.append("Fecha dada: ");
+        mensajeResultadoPrueba.append(fechaAValidar);
+        mensajeResultadoPrueba.append(". Resultado: ");
+        mensajeResultadoPrueba.append(validaTiempoEntrega.aceptarTarea(fechaAValidar));
+        mensajeResultadoPrueba.append("\n Mensaje: ");
+        mensajeResultadoPrueba.append(validaTiempoEntrega.aceptarTareaMensaje(fechaAValidar));
+        
+        System.out.println(mensajeResultadoPrueba);
+        
+        //Caso 2
+        mensajeResultadoPrueba = new StringBuilder("->Caso 2");
+        mensajeResultadoPrueba.append("Fecha dada: ");
+        mensajeResultadoPrueba.append(fechaAValidar);
+        mensajeResultadoPrueba.append(". Resultado: ");
+        mensajeResultadoPrueba.append(validaTiempoEntrega.aceptarTarea(nuevaFechaLimite));
+        mensajeResultadoPrueba.append("\n Mensaje: ");
+        mensajeResultadoPrueba.append(validaTiempoEntrega.aceptarTareaMensaje(nuevaFechaLimite));
+        
+        System.out.println(mensajeResultadoPrueba);
+        
+        
+        //Caso 3
+        mensajeResultadoPrueba = new StringBuilder("->Caso 3");
+        mensajeResultadoPrueba.append("Fecha dada: ");
+        mensajeResultadoPrueba.append(fechaAValidar);
+        mensajeResultadoPrueba.append(". Resultado: ");
+        mensajeResultadoPrueba.append(validaTiempoEntrega.aceptarTarea(nuevoNumeroDias));
+        mensajeResultadoPrueba.append("\n Mensaje: ");
+        mensajeResultadoPrueba.append(validaTiempoEntrega.aceptarTareaMensaje(nuevoNumeroDias));
+        
+        System.out.println(mensajeResultadoPrueba);
     }
 }
