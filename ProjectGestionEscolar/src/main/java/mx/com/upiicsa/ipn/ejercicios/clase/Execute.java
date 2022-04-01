@@ -1,8 +1,10 @@
 package mx.com.upiicsa.ipn.ejercicios.clase;
 
+import java.time.Duration;
 import java.time.LocalDate;
 import java.time.LocalTime;
 import java.time.Month;
+import java.time.Period;
 import mx.com.upiicsa.ipn.ejercicios.clase.singleton.Singleton;
 import mx.com.upiicsa.ipn.ejercicios.clase.EjercicioFecha220328.ValidaTiempoEntrega;
 
@@ -84,7 +86,7 @@ public class Execute {
         
         
         
-        
+        /* 01/04/22
         //Saber si es mayor o menor de 18 años
         LocalDate nacimiento = LocalDate.of(2004,03,29);
         if(nacimiento.plusYears(18).isEqual(LocalDate.now()) || nacimiento.plusYears(18).isBefore(LocalDate.now())){
@@ -145,5 +147,19 @@ public class Execute {
         mensajeResultadoPrueba.append(validaTiempoEntrega.aceptarTareaMensaje(nuevoNumeroDias));
         
         System.out.println(mensajeResultadoPrueba);
+        */
+        
+        
+        ClaseFecha220401.DemoLocalDateTime fechaHora1 = new ClaseFecha220401.DemoLocalDateTime("2015-03-01T13:22:00");
+        ClaseFecha220401.DemoLocalDateTime fechaHora2 = new ClaseFecha220401.DemoLocalDateTime("2015-05-01T13:22:00");
+        System.out.println("Fecha con hora1: " + fechaHora1.getFechaInicio());
+        System.out.println("Fecha con hora2: " + fechaHora2.getFechaInicio());
+        int tiempo = Period.between(fechaHora1.getFechaInicio().toLocalDate(), fechaHora2.getFechaInicio().toLocalDate()).getMonths();
+        System.out.println("Meses de diferencia: " + tiempo);
+        tiempo = Period.between(fechaHora2.getFechaInicio().toLocalDate(), fechaHora1.getFechaInicio().toLocalDate()).getMonths();
+        System.out.println("Meses de diferencia (fecha mayor, fecha menor): " + tiempo);
+        
+        //Duration duracion = Duration.between(fechaHora1.getFechaInicio().toLocalDate(), fechaHora2.getFechaInicio().toLocalDate());
+        //System.out.println("Duración: " + duracion.getSeconds());
     }
 }

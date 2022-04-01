@@ -1,6 +1,11 @@
 package mx.com.upiicsa.ipn.ejercicios.clase;
 
+import java.time.Duration;
+import java.time.Instant;
 import java.time.LocalDate;
+import java.time.LocalDateTime;
+import java.time.LocalTime;
+import java.time.Period;
 import java.time.format.DateTimeFormatter;
 import java.util.Locale;
 
@@ -151,6 +156,81 @@ public class EjercicioFecha220328 {
             this.fechaLimiteDeEntrega = fechaLimiteDeEntrega;
             this.diasEntrega = diasEntrega;
             return this.aceptarTareaPrincipal(LocalDate.parse(fechaAValidar, DateTimeFormatter.ofPattern("dd/MM/yyyy", new Locale("es", "MX"))));
+        }
+    }
+    public class ManejoFechaHora
+    {
+        // Se encuentran en el paquete import java.time.*;
+        private LocalDateTime localDateTime;
+        private LocalDate localDate;
+        private LocalTime localTime;
+        public ManejoFechaHora()
+        {
+            this(LocalDateTime.now(),LocalDate.now(),LocalTime.now());
+        }
+        public ManejoFechaHora(LocalDateTime localDateTime, LocalDate localDate, LocalTime localTime)
+        {
+            this.localDateTime = localDateTime;
+            this.localDate = localDate;
+            this.localTime = localTime;
+        }
+
+        /**
+         * @return the localDateTime
+         */
+        public LocalDateTime getLocalDateTime() {
+            return localDateTime;
+        }
+
+        /**
+         * @param localDateTime the localDateTime to set
+         */
+        public void setLocalDateTime(LocalDateTime localDateTime) {
+            this.localDateTime = localDateTime;
+        }
+
+        /**
+         * @return the localDate
+         */
+        public LocalDate getLocalDate() {
+            return localDate;
+        }
+
+        /**
+         * @param localDate the localDate to set
+         */
+        public void setLocalDate(LocalDate localDate) {
+            this.localDate = localDate;
+        }
+
+        /**
+         * @return the localTime
+         */
+        public LocalTime getLocalTime() {
+            return localTime;
+        }
+
+        /**
+         * @param localTime the localTime to set
+         */
+        public void setLocalTime(LocalTime localTime) {
+            this.localTime = localTime;
+        }
+        
+    }
+    public class ManejoPeriodDuration
+    {
+        public Instant obtenInstantanea()
+        {
+            return Instant.now();
+        }
+        public long obtenIntervaloMilisegundos(Instant inicio, Instant fin)
+        {
+            return Duration.between(inicio,fin).toMillis();
+        }
+        public void obtenIntervaloYear()
+        {
+            
         }
     }
 }
