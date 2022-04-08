@@ -5,8 +5,10 @@ import java.time.LocalDate;
 import java.time.LocalTime;
 import java.time.Month;
 import java.time.Period;
+import mx.com.upiicsa.ipn.ejercicios.clase.ClaseFecha220404.*;
 import mx.com.upiicsa.ipn.ejercicios.clase.singleton.Singleton;
 import mx.com.upiicsa.ipn.ejercicios.clase.EjercicioFecha220328.ValidaTiempoEntrega;
+import mx.com.upiicsa.ipn.projectgestionescolar.alumno.Alumno;
 
 public class Execute {
     public static void main(String[] args) {
@@ -149,17 +151,21 @@ public class Execute {
         System.out.println(mensajeResultadoPrueba);
         */
         
-        
-        ClaseFecha220401.DemoLocalDateTime fechaHora1 = new ClaseFecha220401.DemoLocalDateTime("2015-03-01T13:22:00");
+        /*
+        ClaseFecha220401.DemoLocalDateTime fechaHora1 = new ClaseFecha220401.DemoLocalDateTime("2015-03-01T13:21:00");
         ClaseFecha220401.DemoLocalDateTime fechaHora2 = new ClaseFecha220401.DemoLocalDateTime("2015-05-01T13:22:00");
         System.out.println("Fecha con hora1: " + fechaHora1.getFechaInicio());
         System.out.println("Fecha con hora2: " + fechaHora2.getFechaInicio());
-        int tiempo = Period.between(fechaHora1.getFechaInicio().toLocalDate(), fechaHora2.getFechaInicio().toLocalDate()).getMonths();
-        System.out.println("Meses de diferencia: " + tiempo);
-        tiempo = Period.between(fechaHora2.getFechaInicio().toLocalDate(), fechaHora1.getFechaInicio().toLocalDate()).getMonths();
-        System.out.println("Meses de diferencia (fecha mayor, fecha menor): " + tiempo);
         
-        //Duration duracion = Duration.between(fechaHora1.getFechaInicio().toLocalDate(), fechaHora2.getFechaInicio().toLocalDate());
-        //System.out.println("Duración: " + duracion.getSeconds());
+        Period periodo = Period.between(fechaHora1.getFechaInicio().toLocalDate(), fechaHora2.getFechaInicio().toLocalDate());
+        System.out.println("Periodo en años: " + periodo.getYears());
+        System.out.println("Periodo en meses: " + periodo.getMonths());
+        System.out.println("Periodo en días: " + periodo.getDays());
+        
+        Duration duracion = Duration.between(fechaHora1.getFechaInicio().toLocalTime(), fechaHora2.getFechaInicio().toLocalTime());
+        System.out.println("Tiempo en horas: " + duracion.getSeconds()/60/60);
+        */
+        
+        
     }
 }
