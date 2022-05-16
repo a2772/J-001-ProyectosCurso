@@ -5,6 +5,8 @@
 
 package mx.ipn.upiicsa.calculadora;
 
+import mx.ipn.upiicsa.calculadora.calculator.Calculator;
+
 /**
  *
  * @author paris
@@ -13,5 +15,7 @@ public class Calculadora {
 
     public static void main(String[] args) {
         System.out.println("Hello World!");
+        new Calculator().setVisible(true);
+        
     }
 }

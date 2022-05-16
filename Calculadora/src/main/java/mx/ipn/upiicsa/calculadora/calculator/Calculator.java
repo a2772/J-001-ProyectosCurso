@@ -1,15 +1,26 @@
 package mx.ipn.upiicsa.calculadora.calculator;
 
+import mx.ipn.upiicsa.calculadora.calculator.bs.Funcionalidad;
+import mx.ipn.upiicsa.calculadora.calculator.logic.ValoresLectura;
+
 public class Calculator extends javax.swing.JFrame {
-    //region GlobalVariables
-    //Valores "En memoria RAM"
-    private int resultado;
-    private int valor;
-    //endregion
+    // <editor-fold defaultstate="collapsed" desc="Variables Globales">
+    //Variables de la configuracion actual de la Calculadora
+    private byte estadoActual;
+    private byte operadorActual;
+    private Funcionalidad funcionalidad;
+    private double valorUno;
+    private double valorDos;
+    private double resultado;
+    // </editor-fold>
+    // <editor-fold defaultstate="collapsed" desc="Al instanciar">
     public Calculator() {
+        estadoActual = ValoresLectura.Estado.INICIO;
+        funcionalidad = new Funcionalidad();
         initComponents();
     }
-
+    // </editor-fold>
+    // <editor-fold defaultstate="collapsed" desc="Eventos (AUTOGENERATE)">
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -36,28 +47,35 @@ public class Calculator extends javax.swing.JFrame {
         jbtnOperatorProduct = new javax.swing.JButton();
         jbtnOperatorDivision = new javax.swing.JButton();
         jbtn0 = new javax.swing.JButton();
-        jbtn10 = new javax.swing.JButton();
+        jbtnClearEveryting = new javax.swing.JButton();
+        jbtnOperatorEquals = new javax.swing.JButton();
+        jbtnDot = new javax.swing.JButton();
+        jbtnOperatorMod = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         jpnlDisplay.setBorder(javax.swing.BorderFactory.createTitledBorder("Calculadora"));
 
-        jlblResultado.setText("jLabel1");
+        jlblResultado.setFont(new java.awt.Font("Dialog", 1, 24)); // NOI18N
+        jlblResultado.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
+        jlblResultado.setToolTipText("Display");
+        jlblResultado.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
 
         javax.swing.GroupLayout jpnlDisplayLayout = new javax.swing.GroupLayout(jpnlDisplay);
         jpnlDisplay.setLayout(jpnlDisplayLayout);
         jpnlDisplayLayout.setHorizontalGroup(
             jpnlDisplayLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jpnlDisplayLayout.createSequentialGroup()
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jpnlDisplayLayout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jlblResultado)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addComponent(jlblResultado, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap())
         );
         jpnlDisplayLayout.setVerticalGroup(
             jpnlDisplayLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jpnlDisplayLayout.createSequentialGroup()
-                .addComponent(jlblResultado)
-                .addGap(0, 97, Short.MAX_VALUE))
+                .addGap(21, 21, 21)
+                .addComponent(jlblResultado, javax.swing.GroupLayout.PREFERRED_SIZE, 49, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(25, Short.MAX_VALUE))
         );
 
         jbtnOperatorPlus.setFont(new java.awt.Font("sansserif", 0, 24)); // NOI18N
@@ -67,42 +85,102 @@ public class Calculator extends javax.swing.JFrame {
                 jbtnOperatorPlusMouseClicked(evt);
             }
         });
+        jbtnOperatorPlus.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jbtnOperatorPlusActionPerformed(evt);
+            }
+        });
 
         jbtn1.setFont(new java.awt.Font("sansserif", 0, 24)); // NOI18N
         jbtn1.setText("1");
+        jbtn1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jbtn1ActionPerformed(evt);
+            }
+        });
 
         jbtn2.setFont(new java.awt.Font("sansserif", 0, 24)); // NOI18N
         jbtn2.setText("2");
+        jbtn2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jbtn2ActionPerformed(evt);
+            }
+        });
 
         jbtn3.setFont(new java.awt.Font("sansserif", 0, 24)); // NOI18N
         jbtn3.setText("3");
+        jbtn3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jbtn3ActionPerformed(evt);
+            }
+        });
 
         jbtn4.setFont(new java.awt.Font("sansserif", 0, 24)); // NOI18N
         jbtn4.setText("4");
+        jbtn4.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jbtn4ActionPerformed(evt);
+            }
+        });
 
         jbtn5.setFont(new java.awt.Font("sansserif", 0, 24)); // NOI18N
         jbtn5.setText("5");
+        jbtn5.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jbtn5ActionPerformed(evt);
+            }
+        });
 
         jbtn6.setFont(new java.awt.Font("sansserif", 0, 24)); // NOI18N
         jbtn6.setText("6");
+        jbtn6.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jbtn6ActionPerformed(evt);
+            }
+        });
 
         jbtn8.setFont(new java.awt.Font("sansserif", 0, 24)); // NOI18N
         jbtn8.setText("8");
+        jbtn8.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jbtn8ActionPerformed(evt);
+            }
+        });
 
         jbtn9.setFont(new java.awt.Font("sansserif", 0, 24)); // NOI18N
         jbtn9.setText("9");
+        jbtn9.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jbtn9ActionPerformed(evt);
+            }
+        });
 
         jbtn7.setFont(new java.awt.Font("sansserif", 0, 24)); // NOI18N
         jbtn7.setText("7");
+        jbtn7.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jbtn7ActionPerformed(evt);
+            }
+        });
 
         jbtnOperatorMinus.setFont(new java.awt.Font("sansserif", 0, 24)); // NOI18N
         jbtnOperatorMinus.setText("-");
+        jbtnOperatorMinus.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jbtnOperatorMinusActionPerformed(evt);
+            }
+        });
 
         jbtnOperatorProduct.setFont(new java.awt.Font("sansserif", 0, 24)); // NOI18N
         jbtnOperatorProduct.setText("X");
         jbtnOperatorProduct.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 jbtnOperatorProductMouseClicked(evt);
+            }
+        });
+        jbtnOperatorProduct.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jbtnOperatorProductActionPerformed(evt);
             }
         });
 
@@ -113,70 +191,116 @@ public class Calculator extends javax.swing.JFrame {
                 jbtnOperatorDivisionMouseClicked(evt);
             }
         });
+        jbtnOperatorDivision.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jbtnOperatorDivisionActionPerformed(evt);
+            }
+        });
 
         jbtn0.setFont(new java.awt.Font("sansserif", 0, 24)); // NOI18N
         jbtn0.setText("0");
+        jbtn0.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jbtn0ActionPerformed(evt);
+            }
+        });
 
-        jbtn10.setFont(new java.awt.Font("sansserif", 0, 21)); // NOI18N
-        jbtn10.setText("CE");
+        jbtnClearEveryting.setFont(new java.awt.Font("sansserif", 0, 21)); // NOI18N
+        jbtnClearEveryting.setText("CE");
+        jbtnClearEveryting.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jbtnClearEverytingActionPerformed(evt);
+            }
+        });
+
+        jbtnOperatorEquals.setFont(new java.awt.Font("sansserif", 0, 24)); // NOI18N
+        jbtnOperatorEquals.setText("=");
+        jbtnOperatorEquals.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jbtnOperatorEqualsActionPerformed(evt);
+            }
+        });
+
+        jbtnDot.setFont(new java.awt.Font("sansserif", 0, 24)); // NOI18N
+        jbtnDot.setText(".");
+        jbtnDot.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jbtnDotActionPerformed(evt);
+            }
+        });
+
+        jbtnOperatorMod.setFont(new java.awt.Font("sansserif", 0, 21)); // NOI18N
+        jbtnOperatorMod.setText("%");
+        jbtnOperatorMod.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jbtnOperatorModActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jpnlButtonsLayout = new javax.swing.GroupLayout(jpnlButtons);
         jpnlButtons.setLayout(jpnlButtonsLayout);
         jpnlButtonsLayout.setHorizontalGroup(
             jpnlButtonsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jpnlButtonsLayout.createSequentialGroup()
+                .addContainerGap()
                 .addGroup(jpnlButtonsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jpnlButtonsLayout.createSequentialGroup()
-                        .addContainerGap()
                         .addGroup(jpnlButtonsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jbtn7, javax.swing.GroupLayout.PREFERRED_SIZE, 58, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jbtnDot, javax.swing.GroupLayout.PREFERRED_SIZE, 58, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(18, 18, 18)
+                        .addGroup(jpnlButtonsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addGroup(jpnlButtonsLayout.createSequentialGroup()
-                                .addComponent(jbtn1, javax.swing.GroupLayout.PREFERRED_SIZE, 58, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(jbtn8, javax.swing.GroupLayout.PREFERRED_SIZE, 58, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(18, 18, 18)
-                                .addComponent(jbtn2, javax.swing.GroupLayout.PREFERRED_SIZE, 58, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(18, 18, 18)
-                                .addComponent(jbtn3, javax.swing.GroupLayout.PREFERRED_SIZE, 58, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(jbtn9, javax.swing.GroupLayout.PREFERRED_SIZE, 58, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jbtn10, javax.swing.GroupLayout.PREFERRED_SIZE, 58, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addComponent(jbtnOperatorMinus, javax.swing.GroupLayout.PREFERRED_SIZE, 64, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(jbtnOperatorDivision, javax.swing.GroupLayout.PREFERRED_SIZE, 69, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(jpnlButtonsLayout.createSequentialGroup()
-                                .addComponent(jbtn4, javax.swing.GroupLayout.PREFERRED_SIZE, 58, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(jbtn0, javax.swing.GroupLayout.PREFERRED_SIZE, 58, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(18, 18, 18)
-                                .addComponent(jbtn5, javax.swing.GroupLayout.PREFERRED_SIZE, 58, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(18, 18, 18)
-                                .addComponent(jbtn6, javax.swing.GroupLayout.PREFERRED_SIZE, 58, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(jpnlButtonsLayout.createSequentialGroup()
-                                .addComponent(jbtn7, javax.swing.GroupLayout.PREFERRED_SIZE, 58, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(18, 18, 18)
-                                .addGroup(jpnlButtonsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jbtn0, javax.swing.GroupLayout.PREFERRED_SIZE, 58, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addGroup(jpnlButtonsLayout.createSequentialGroup()
-                                        .addComponent(jbtn8, javax.swing.GroupLayout.PREFERRED_SIZE, 58, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addGap(18, 18, 18)
-                                        .addComponent(jbtn9, javax.swing.GroupLayout.PREFERRED_SIZE, 58, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addComponent(jbtnOperatorMinus, javax.swing.GroupLayout.PREFERRED_SIZE, 58, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                        .addComponent(jbtnOperatorDivision, javax.swing.GroupLayout.PREFERRED_SIZE, 58, javax.swing.GroupLayout.PREFERRED_SIZE))))))
-                    .addGroup(jpnlButtonsLayout.createSequentialGroup()
-                        .addGap(223, 223, 223)
-                        .addComponent(jbtnOperatorPlus, javax.swing.GroupLayout.PREFERRED_SIZE, 58, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jbtnOperatorProduct, javax.swing.GroupLayout.PREFERRED_SIZE, 58, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(335, Short.MAX_VALUE))
+                                .addComponent(jbtnOperatorEquals, javax.swing.GroupLayout.PREFERRED_SIZE, 58, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(7, 7, 7)
+                                .addComponent(jbtnOperatorPlus, javax.swing.GroupLayout.PREFERRED_SIZE, 64, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(jbtnOperatorProduct, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+                    .addGroup(jpnlButtonsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                        .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jpnlButtonsLayout.createSequentialGroup()
+                            .addComponent(jbtn4, javax.swing.GroupLayout.PREFERRED_SIZE, 58, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGap(18, 18, 18)
+                            .addComponent(jbtn5, javax.swing.GroupLayout.PREFERRED_SIZE, 58, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGap(18, 18, 18)
+                            .addComponent(jbtn6, javax.swing.GroupLayout.PREFERRED_SIZE, 58, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                            .addComponent(jbtnOperatorMod, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addGroup(jpnlButtonsLayout.createSequentialGroup()
+                            .addComponent(jbtn1, javax.swing.GroupLayout.PREFERRED_SIZE, 58, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGap(18, 18, 18)
+                            .addComponent(jbtn2, javax.swing.GroupLayout.PREFERRED_SIZE, 58, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGap(18, 18, 18)
+                            .addComponent(jbtn3, javax.swing.GroupLayout.PREFERRED_SIZE, 58, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                            .addComponent(jbtnClearEveryting))))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jpnlButtonsLayout.setVerticalGroup(
             jpnlButtonsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jpnlButtonsLayout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(jpnlButtonsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jbtn1)
-                    .addComponent(jbtn2)
-                    .addComponent(jbtn3)
-                    .addComponent(jbtn10, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGroup(jpnlButtonsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jbtnClearEveryting, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addGroup(jpnlButtonsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(jbtn1)
+                        .addComponent(jbtn2)
+                        .addComponent(jbtn3)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jpnlButtonsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jbtn4)
                     .addComponent(jbtn5)
-                    .addComponent(jbtn6))
+                    .addComponent(jbtn6)
+                    .addComponent(jbtnOperatorMod, javax.swing.GroupLayout.DEFAULT_SIZE, 39, Short.MAX_VALUE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jpnlButtonsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jbtn7)
@@ -188,8 +312,10 @@ public class Calculator extends javax.swing.JFrame {
                 .addGroup(jpnlButtonsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jbtnOperatorPlus)
                     .addComponent(jbtnOperatorProduct)
-                    .addComponent(jbtn0))
-                .addGap(117, 117, 117))
+                    .addComponent(jbtn0)
+                    .addComponent(jbtnDot)
+                    .addComponent(jbtnOperatorEquals))
+                .addGap(18, 18, 18))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -199,38 +325,110 @@ public class Calculator extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jpnlButtons, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jpnlDisplay, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(jpnlDisplay, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(jpnlButtons, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(0, 0, Short.MAX_VALUE)))
                 .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jpnlDisplay, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jpnlButtons, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addContainerGap())
+                .addComponent(jpnlButtons, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jbtnOperatorPlusMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jbtnOperatorPlusMouseClicked
-        jlblResultado.setText("Probando");
-    }//GEN-LAST:event_jbtnOperatorPlusMouseClicked
+    private void jbtnOperatorDivisionMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jbtnOperatorDivisionMouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jbtnOperatorDivisionMouseClicked
 
     private void jbtnOperatorProductMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jbtnOperatorProductMouseClicked
         // TODO add your handling code here:
     }//GEN-LAST:event_jbtnOperatorProductMouseClicked
 
-    private void jbtnOperatorDivisionMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jbtnOperatorDivisionMouseClicked
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jbtnOperatorDivisionMouseClicked
+    private void jbtnOperatorPlusMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jbtnOperatorPlusMouseClicked
+        
+    }//GEN-LAST:event_jbtnOperatorPlusMouseClicked
 
-    /**
-     * @param args the command line arguments
-     */
+    private void jbtn1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtn1ActionPerformed
+        capturarNumero(ValoresLectura.Boton.UNO);
+    }//GEN-LAST:event_jbtn1ActionPerformed
+
+    private void jbtnClearEverytingActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtnClearEverytingActionPerformed
+        limpiarDisplay();
+    }//GEN-LAST:event_jbtnClearEverytingActionPerformed
+
+    private void jbtn2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtn2ActionPerformed
+        capturarNumero(ValoresLectura.Boton.DOS);
+    }//GEN-LAST:event_jbtn2ActionPerformed
+
+    private void jbtn3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtn3ActionPerformed
+        capturarNumero(ValoresLectura.Boton.TRES);
+    }//GEN-LAST:event_jbtn3ActionPerformed
+
+    private void jbtn4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtn4ActionPerformed
+        capturarNumero(ValoresLectura.Boton.CUATRO);
+    }//GEN-LAST:event_jbtn4ActionPerformed
+
+    private void jbtn5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtn5ActionPerformed
+        capturarNumero(ValoresLectura.Boton.CINCO);
+    }//GEN-LAST:event_jbtn5ActionPerformed
+
+    private void jbtn6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtn6ActionPerformed
+        capturarNumero(ValoresLectura.Boton.SEIS);
+    }//GEN-LAST:event_jbtn6ActionPerformed
+
+    private void jbtn7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtn7ActionPerformed
+        capturarNumero(ValoresLectura.Boton.SIETE);
+    }//GEN-LAST:event_jbtn7ActionPerformed
+
+    private void jbtn8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtn8ActionPerformed
+        capturarNumero(ValoresLectura.Boton.OCHO);
+    }//GEN-LAST:event_jbtn8ActionPerformed
+
+    private void jbtn9ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtn9ActionPerformed
+        capturarNumero(ValoresLectura.Boton.NUEVE);
+    }//GEN-LAST:event_jbtn9ActionPerformed
+
+    private void jbtn0ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtn0ActionPerformed
+        capturarNumero(ValoresLectura.Boton.CERO);
+    }//GEN-LAST:event_jbtn0ActionPerformed
+
+    private void jbtnDotActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtnDotActionPerformed
+        capturarNumero(ValoresLectura.Boton.PUNTO);
+    }//GEN-LAST:event_jbtnDotActionPerformed
+
+    private void jbtnOperatorEqualsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtnOperatorEqualsActionPerformed
+        actualizaEstado(ValoresLectura.Accion.IGUAL);
+        setDisplay("");
+    }//GEN-LAST:event_jbtnOperatorEqualsActionPerformed
+
+    private void jbtnOperatorPlusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtnOperatorPlusActionPerformed
+        capturarOperador(ValoresLectura.Operador.SUMA);
+    }//GEN-LAST:event_jbtnOperatorPlusActionPerformed
+
+    private void jbtnOperatorMinusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtnOperatorMinusActionPerformed
+        capturarOperador(ValoresLectura.Operador.RESTA);
+    }//GEN-LAST:event_jbtnOperatorMinusActionPerformed
+
+    private void jbtnOperatorProductActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtnOperatorProductActionPerformed
+        capturarOperador(ValoresLectura.Operador.PRODUCTO);
+    }//GEN-LAST:event_jbtnOperatorProductActionPerformed
+
+    private void jbtnOperatorDivisionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtnOperatorDivisionActionPerformed
+        capturarOperador(ValoresLectura.Operador.COCIENTE);
+    }//GEN-LAST:event_jbtnOperatorDivisionActionPerformed
+
+    private void jbtnOperatorModActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtnOperatorModActionPerformed
+        capturarOperador(ValoresLectura.Operador.PORCENTAJE);
+    }//GEN-LAST:event_jbtnOperatorModActionPerformed
+    // </editor-fold>
+    // <editor-fold defaultstate="collapsed" desc="PSVM (AUTOGENERATE)">
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
@@ -261,12 +459,11 @@ public class Calculator extends javax.swing.JFrame {
                 new Calculator().setVisible(true);
             }
         });
-    }
-
+    }// </editor-fold>
+    // <editor-fold defaultstate="collapsed" desc="Declaracion Variables (AUTOGENERATE)">
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jbtn0;
     private javax.swing.JButton jbtn1;
-    private javax.swing.JButton jbtn10;
     private javax.swing.JButton jbtn2;
     private javax.swing.JButton jbtn3;
     private javax.swing.JButton jbtn4;
@@ -275,12 +472,142 @@ public class Calculator extends javax.swing.JFrame {
     private javax.swing.JButton jbtn7;
     private javax.swing.JButton jbtn8;
     private javax.swing.JButton jbtn9;
+    private javax.swing.JButton jbtnClearEveryting;
+    private javax.swing.JButton jbtnDot;
     private javax.swing.JButton jbtnOperatorDivision;
+    private javax.swing.JButton jbtnOperatorEquals;
     private javax.swing.JButton jbtnOperatorMinus;
+    private javax.swing.JButton jbtnOperatorMod;
     private javax.swing.JButton jbtnOperatorPlus;
     private javax.swing.JButton jbtnOperatorProduct;
     private javax.swing.JLabel jlblResultado;
     private javax.swing.JPanel jpnlButtons;
     private javax.swing.JPanel jpnlDisplay;
     // End of variables declaration//GEN-END:variables
+// </editor-fold>
+    // <editor-fold defaultstate="collapsed" desc="Mis metodos">
+    
+    // <editor-fold defaultstate="collapsed" desc="set">
+    private void setDisplay(String value){
+        if(estadoActual == ValoresLectura.Estado.INICIO
+                ||estadoActual == ValoresLectura.Estado.CAPTURA){//Concatenamos
+            this.jlblResultado.setText(jlblResultado.getText()+value);
+        }else if(estadoActual == ValoresLectura.Estado.OPERADOR){
+            setValorUno(Double.parseDouble(jlblResultado.getText()));
+            this.jlblResultado.setText("");//Limpiamos pantalla
+        }else if(estadoActual == ValoresLectura.Estado.CALCULAR){
+            setValorDos(Double.parseDouble(jlblResultado.getText()));
+            setResultado(funcionalidad.calcular(operadorActual, valorUno, valorDos));
+            this.jlblResultado.setText(String.valueOf(getResultado()));
+        }
+    }
+    // </editor-fold>
+    // <editor-fold defaultstate="collapsed" desc="get">
+    // </editor-fold>
+    // <editor-fold defaultstate="collapsed" desc="do something">
+    private void actualizaEstado(byte accion){
+        //Si es inicio y se ingresa un número, estaremos capturando. O si es operador y mete número también
+        if((estadoActual == ValoresLectura.Estado.INICIO && accion == ValoresLectura.Accion.NUMERO) ||//INICIO + NUMERO = CAPTURA
+                (estadoActual == ValoresLectura.Estado.OPERADOR && accion == ValoresLectura.Accion.NUMERO )||//OPERADOR + NUMERO = CAPTURA
+                (estadoActual == ValoresLectura.Estado.CALCULAR && accion == ValoresLectura.Accion.NUMERO )){//IGUAL + NUMERO = CAPTURA pero limpiamos
+            setEstadoActual(ValoresLectura.Estado.CAPTURA);
+        }
+        //De otro modo, si ya está en captura y selecciona un operador, pasamos al estado de operador
+        else if((estadoActual == ValoresLectura.Estado.CAPTURA && accion == ValoresLectura.Accion.OPERADOR)||//CAPTURA + OPERADOR = OPERADOR
+                (estadoActual == ValoresLectura.Estado.CALCULAR && accion == ValoresLectura.Accion.OPERADOR)){//IGUAL + OPERADOR = OPERADOR
+            setEstadoActual(ValoresLectura.Estado.OPERADOR);
+        }
+        //Si capturo y la operación es el =
+        else if(estadoActual == ValoresLectura.Estado.CAPTURA && accion == ValoresLectura.Accion.IGUAL){//CAPTURA + IGUAL = IGUAL
+            setEstadoActual(ValoresLectura.Estado.CALCULAR);
+        }    
+    }
+    private void limpiarDisplay(){
+        jlblResultado.setText("");
+        setValorUno(0);
+        setValorDos(0);
+        setResultado(0);
+    }
+    private void capturarNumero(String numero){
+        setDisplay(numero);
+        actualizaEstado(ValoresLectura.Accion.NUMERO);//Manda una acción para ver a que estado pasará
+    }
+    private void capturarOperador(byte operadorActual){
+        setOperadorActual(operadorActual);
+        actualizaEstado(ValoresLectura.Accion.OPERADOR);//Manda una acción para ver a que estado pasará
+    }
+    // </editor-fold>
+    
+    // </editor-fold>
+    // <editor-fold defaultstate="collapsed" desc="Setters y Getters">
+    /**
+     * @return the estadoActual
+     */
+    public byte getEstadoActual() {
+        return estadoActual;
+    }
+
+    /**
+     * @param estadoActual the estadoActual to set
+     */
+    public void setEstadoActual(byte estadoActual) {
+        this.estadoActual = estadoActual;
+    }
+
+    /**
+     * @return the operadorActual
+     */
+    public byte getOperadorActual() {
+        return operadorActual;
+    }
+
+    /**
+     * @param operadorActual the operadorActual to set
+     */
+    public void setOperadorActual(byte operadorActual) {
+        this.operadorActual = operadorActual;
+    }
+
+    /**
+     * @return the valorUno
+     */
+    public double getValorUno() {
+        return valorUno;
+    }
+
+    /**
+     * @param valorUno the valorUno to set
+     */
+    public void setValorUno(double valorUno) {
+        this.valorUno = valorUno;
+    }
+
+    /**
+     * @return the valorDos
+     */
+    public double getValorDos() {
+        return valorDos;
+    }
+
+    /**
+     * @param valorDos the valorDos to set
+     */
+    public void setValorDos(double valorDos) {
+        this.valorDos = valorDos;
+    }
+
+    /**
+     * @return the resultado
+     */
+    public double getResultado() {
+        return resultado;
+    }
+
+    /**
+     * @param resultado the resultado to set
+     */
+    public void setResultado(double resultado) {
+        this.resultado = resultado;
+    }
+    // </editor-fold>
 }
