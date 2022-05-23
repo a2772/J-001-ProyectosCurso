@@ -5,17 +5,32 @@
 
 package mx.ipn.upiicsa.calculadora;
 
-import mx.ipn.upiicsa.calculadora.calculator.Calculator;
+import java.util.ArrayList;
+import mx.com.upiicsa.test.*;
 
 /**
  *
  * @author paris
  */
 public class Calculadora {
-
     public static void main(String[] args) {
-        System.out.println("Hello World!");
-        new Calculator().setVisible(true);
+        Persona profesor = new Profesor();
+        Persona alumno = new Alumno();
+        ArrayList<Persona> personas = new ArrayList<Persona>();
+        personas.add(profesor);
+        personas.add(alumno);
+        for(Persona personaLista: personas){
+            personaLista.ingresar();
+        }
         
+        Contribuyente pContribuyente = new Profesor();
+        PermisosAsistencia pPermisos = new Profesor();
+        pPermisos = (Profesor)pContribuyente;
+        //((Contribuyente)pPermisos).
+                
+        pContribuyente.pagaImpuestos();
+    }
+    public static void print(Persona persona){
+        persona.ingresar();
     }
 }
