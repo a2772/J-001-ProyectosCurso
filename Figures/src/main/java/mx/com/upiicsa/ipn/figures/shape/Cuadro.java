@@ -12,7 +12,12 @@ public class Cuadro extends Poligono{
     @Override
     public void dibujar(ArrayList<Dot> dots){
         StringBuilder cuadro = new StringBuilder("Dibujando Cuadro...\n");
+        byte puntosDibujados=0;
         for(Dot dot : dots){
+            if(puntosDibujados>=4){
+                break;
+            }
+            puntosDibujados++;
             //Guardamos los puntos para imprimirlos
             cuadro.append("(" + dot.getAbscisa() + "," + dot.getOrdenada() + ")\n");
         }

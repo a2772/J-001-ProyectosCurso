@@ -16,7 +16,12 @@ public class Triangulo extends Poligono{
     @Override
     public void dibujar(ArrayList<Dot> dots){
         StringBuilder cuadro = new StringBuilder("Dibujando Triangulo...\n");
+        byte puntosDibujados = 0;
         for(Dot dot : dots){
+            if(puntosDibujados>=3){
+                break;
+            }
+            puntosDibujados++;
             //Guardamos los puntos para imprimirlos
             cuadro.append("(" + dot.getAbscisa() + "," + dot.getOrdenada() + ")\n");
         }

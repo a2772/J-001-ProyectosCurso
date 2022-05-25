@@ -9,34 +9,39 @@ package mx.com.upiicsa.ipn.figures.util;
  * @author paris
  */
 public class Dot {
-    private int abscisa;
-    private int ordenada;
+    private double abscisa;
+    private double ordenada;
+    
+    public Dot(double abscisa,double ordenada){
+        this.abscisa = abscisa;
+        this.ordenada = ordenada;
+    }
 
     /**
      * @return the abscisa
      */
-    public int getAbscisa() {
+    public double getAbscisa() {
         return abscisa;
     }
 
     /**
      * @param abscisa the abscisa to set
      */
-    public void setAbscisa(int abscisa) {
+    public void setAbscisa(double abscisa) {
         this.abscisa = abscisa;
     }
 
     /**
      * @return the ordenada
      */
-    public int getOrdenada() {
+    public double getOrdenada() {
         return ordenada;
     }
 
     /**
      * @param ordenada the ordenada to set
      */
-    public void setOrdenada(int ordenada) {
+    public void setOrdenada(double ordenada) {
         this.ordenada = ordenada;
     }
     
